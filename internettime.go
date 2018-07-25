@@ -1,3 +1,4 @@
+// Package internettime is a simple library to convert time of day to Swatch Internet Time in beats. (See https://en.wikipedia.org/wiki/Swatch_Internet_Time)
 package internettime
 
 import (
