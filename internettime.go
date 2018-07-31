@@ -7,7 +7,19 @@ import (
 
 // ConvertToBeats returns the argument time converted to beats.
 func ConvertToBeats(t time.Time) int {
-	t = t.UTC()
-	var beats = int(float64(t.Second()+(t.Minute()*60)+((t.Hour()+1)*3600)) / 86.4)
+	var utc = t.UTC()
+	var seconds = utc.Second()
+	var minutes = utc.Minute()
+	var hours = utc.Hour()
+	if hours < 24 {
+		hours = hours + 1
+	}
+
+	var beatsFloat = float32(seconds+(minutes*60)+(hours*3600)) / float32(86.4)
+	var beats = int(beatsFloat)
+	if beats == 1000 {
+		beats = 0
+	}
+
 	return beats
 }
