@@ -17,8 +17,8 @@ func ConvertToBeats(t time.Time) int {
 
 	var beatsFloat = float32(seconds+(minutes*60)+(hours*3600)) / float32(86.4)
 	var beats = int(beatsFloat)
-	if beats == 1000 {
-		beats = 0
+	if beats >= 1000 {
+		beats -= 1000
 	}
 
 	return beats
